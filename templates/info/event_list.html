@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--写真のスタイル-->
+<style>
+  .photo {
+    height: 180px;
+    width: 320px;
+    
+}
+
+</style>
+
+<main>
+<div class="container px-4 py-5" id="featured-3">
+  <h1 class="pb-2 border-bottom">募集中イベント</h1>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for event in event_list %}
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+      
+       <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">{{ event.title }}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">サブタイトル？？</h1>
+          <img src="{{event.photo.url}}" class="photo"> 
+          <ul class="list-unstyled mt-3 mb-4">
+           <li>{{event.date}}</li>
+           <li>{{event.deadline}}</li>
+           <li>{{event.location}}</li>
+            <li>{{event.text}}</li>
+            <li>
+              {% for assign in event.member.all %}
+              {{ assign.name }}
+              {% endfor %}
+            </li>
+          </ul>
+        
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="container px-4 py-5" id="featured-3">
+  <h1 class="pb-2 border-bottom">開催予定イベント</h1>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+ 
+  </div>
+</div>
+
+
+<div class="container px-4 py-5" id="featured-3">
+  <h1 class="pb-2 border-bottom">終了イベント</h1>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    
+  </div>
+</div>
+
+
+
+
+
+</main>
+{% endblock %}
