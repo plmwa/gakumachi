@@ -17,18 +17,16 @@
     {% for event in event_list %}
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
-      
-       <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">{{ event.title }}</h4>
-        </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">サブタイトル？？</h1>
+          <h1 class="card-title pricing-card-title">{{event.title}}</h1>
           <img src="{{event.photo.url}}" class="photo"> 
           <ul class="list-unstyled mt-3 mb-4">
-           <li>{{event.date}}</li>
+           <li>日程：{{event.date}}</li>
            <li>{{event.deadline}}</li>
+           <a href = "{{event.url}}">応募はこちらから</a>
            <li>{{event.location}}</li>
             <li>{{event.text}}</li>
+            
             <li>
               {% for assign in event.member.all %}
               {{ assign.name }}
