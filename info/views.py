@@ -15,3 +15,6 @@ class EventListView(generic.ListView):
 
 class MemberListView(generic.ListView):
     model=Member
+
+class EventDetailView(generic.DetailView): # 追加
+    model = Event 

@@ -18,7 +18,7 @@
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-body">
-          <h1 class="card-title pricing-card-title">{{event.title}}</h1>
+          <h1 class="card-title pricing-card-title"><a href="{% url 'info:event_detail' event.pk %}">{{event.title}}</a></h1>
           <img src="{{event.photo.url}}" class="photo"> 
           <ul class="list-unstyled mt-3 mb-4">
            <li>日程：{{event.date}}</li>
