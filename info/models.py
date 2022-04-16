@@ -12,7 +12,8 @@ class Member(models.Model):
 
 class Event(models.Model):
     title = models.CharField('タイトル', max_length=50)
-    date=models.DateTimeField('日付',default=timezone.now)
+    date_start=models.DateTimeField('開催日',default=timezone.now)
+    date_end=models.DateTimeField('終了日',default=timezone.now)
     photo= models.ImageField(blank=True, null=True)
     deadline=models.DateTimeField('締め切り日',default=timezone.now)
     location=models.CharField('場所',max_length=50)
