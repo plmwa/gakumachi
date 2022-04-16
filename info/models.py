@@ -20,3 +20,4 @@ class Event(models.Model):
     text=models.TextField('内容')
     url=models.URLField('URL')
     member = models.ManyToManyField(Member,verbose_name='担当者')
+    poster= models.ImageField(blank=True, null=True)
