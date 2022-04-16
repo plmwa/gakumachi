@@ -36,7 +36,8 @@ a {
             <li>{{event.text}}</li>
             
           </ul>
-          <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start}}～{{event.date_end}}</span></p> 
+          <p class="lead">募集締切：<span style="font-size:1em;">{{event.deadline | date:"Y-m-d"}}</span></p> 
+          <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start| date:"Y-m-d"}}～{{event.date_end| date:"Y-m-d"}}</span></p> 
           
         </div>
       </div>

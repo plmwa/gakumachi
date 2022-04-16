@@ -101,8 +101,8 @@ a {
       <div class="my-3 p-3">
         <p class="lead">{{event.text}}</p>
         <p class="lead">開催場所：{{event.location}}</p>
-        <p class="lead">募集締切日：{{event.deadline}}</p>
-        <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start}}～{{event.date_end}}</span></p> 
+        <p class="lead">募集締切日：{{event.deadline| date:"Y-m-d"}}</p>
+        <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start| date:"Y-m-d"}}～{{event.date_end| date:"Y-m-d"}}</span></p> 
         <a href="{{event.url}}">応募はこちらから </a>
       </div>
       

@@ -10,7 +10,7 @@ class IndexView(generic.TemplateView):
 class EventListView(generic.ListView):
     model=Event
 
-    today = datetime.datetime.now()
+    today = datetime.datetime.today()
         
 
 class MemberListView(generic.ListView):
