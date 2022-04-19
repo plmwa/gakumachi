@@ -21,3 +21,14 @@ class Event(models.Model):
     url=models.URLField('URL')
     member = models.ManyToManyField(Member,verbose_name='担当者')
     poster= models.ImageField(blank=True, null=True)
+
+    def is_deadline(self):
+        current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
+        
+        return  current_day < self.deadline
+    def is_date_start(self):
+        current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
+        return  self.deadline < current_day and  current_day < self.date_start
+    def is_date_end(self):
+        current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
+        return   self.date_start < current_day

@@ -24,8 +24,9 @@ a {
   <h1 class="pb-2 border-bottom">募集中イベント</h1>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
     {% for event in event_list %}
-    
+    {% if event.is_deadline %}
     <div class="col">
+      
       
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-body">
@@ -41,9 +42,10 @@ a {
           
         </div>
       </div>
+      
     
     </div>
-    
+    {% endif %}
     {% endfor %}
   </div>
 </div>
@@ -52,7 +54,30 @@ a {
 <div class="container px-4 py-5" id="featured-3">
   <h1 class="pb-2 border-bottom">開催予定イベント</h1>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
- 
+    {% for event in event_list %}
+    {% if event.is_date_start %}
+    <div class="col">
+      
+      
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+          <a href="{% url 'info:event_detail' event.pk %}"></a>
+          <h1 class="card-title pricing-card-title">{{event.title}}</h1>
+          <img src="{{event.photo.url}}" class="photo"> 
+          <ul class="list-unstyled mt-3 mb-4">  
+            <li>{{event.text}}</li>
+            
+          </ul>
+          <p class="lead">募集締切：<span style="font-size:1em;">{{event.deadline | date:"Y-m-d"}}</span></p> 
+          <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start| date:"Y-m-d"}}～{{event.date_end| date:"Y-m-d"}}</span></p> 
+          
+        </div>
+      </div>
+     
+    
+    </div>
+    {% endif %}
+    {% endfor %}
   </div>
 </div>
 
@@ -60,7 +85,29 @@ a {
 <div class="container px-4 py-5" id="featured-3">
   <h1 class="pb-2 border-bottom">終了イベント</h1>
   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for event in event_list %}
+    {% if event.is_date_end %}
     
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-body">
+          <a href="{% url 'info:event_detail' event.pk %}"></a>
+          <h1 class="card-title pricing-card-title">{{event.title}}</h1>
+          <img src="{{event.photo.url}}" class="photo"> 
+          <ul class="list-unstyled mt-3 mb-4">  
+            <li>{{event.text}}</li>
+            
+          </ul>
+          <p class="lead">募集締切：<span style="font-size:1em;">{{event.deadline | date:"Y-m-d"}}</span></p> 
+          <p class="lead">開催期間：<span style="font-size:1em;">{{event.date_start| date:"Y-m-d"}}～{{event.date_end| date:"Y-m-d"}}</span></p> 
+          
+        </div>
+      </div>
+      
+    
+    </div>
+    {% endif %}
+    {% endfor %}
   </div>
 </div>
 
