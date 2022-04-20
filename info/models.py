@@ -1,34 +1,40 @@
 from django.db import models
-from django.utils import timezone # django で日付を管理するためのモジュール
+from django.utils import timezone  # django で日付を管理するためのモジュール
 
 # Create your models here.
+
+
 class Member(models.Model):
-    name =models.CharField('名前',max_length=20)
-    birthday=models.DateField('誕生日')
-    memo=models.TextField('一言')
+    name = models.CharField('名前', max_length=20)
+    birthday = models.DateField('誕生日')
+    memo = models.TextField('一言')
     icon = models.ImageField(blank=True, null=True)
+
     def __str__(self):
         return self.name
 
+
 class Event(models.Model):
     title = models.CharField('タイトル', max_length=50)
-    date_start=models.DateTimeField('開催日',default=timezone.now)
-    date_end=models.DateTimeField('終了日',default=timezone.now)
-    photo= models.ImageField(blank=True, null=True)
-    deadline=models.DateTimeField('締め切り日',default=timezone.now)
-    location=models.CharField('場所',max_length=50)
-    text=models.TextField('内容')
-    url=models.URLField('URL')
-    member = models.ManyToManyField(Member,verbose_name='担当者')
-    poster= models.ImageField(blank=True, null=True)
+    date_start = models.DateTimeField('開催日', default=timezone.now)
+    date_end = models.DateTimeField('終了日', default=timezone.now)
+    photo = models.ImageField(blank=True, null=True)
+    deadline = models.DateTimeField('締め切り日', default=timezone.now)
+    location = models.CharField('場所', max_length=50)
+    text = models.TextField('内容')
+    url = models.URLField('URL')
+    member = models.ManyToManyField(Member, verbose_name='担当者')
+    poster = models.ImageField(blank=True, null=True)
 
     def is_deadline(self):
         current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
-        
-        return  current_day < self.deadline
+
+        return current_day < self.deadline
+
     def is_date_start(self):
         current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
-        return  self.deadline < current_day and  current_day < self.date_start
+        return self.deadline < current_day and current_day < self.date_start
+
     def is_date_end(self):
         current_day = timezone.datetime.today().replace(tzinfo=timezone.utc)
-        return   self.date_start < current_day
+        return self.date_start < current_day
